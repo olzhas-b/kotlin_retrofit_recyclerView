@@ -15,16 +15,16 @@ class User_Details : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_profile)
 
-        val username: String? = intent.getStringExtra("username")
-//        val description: String? = intent.getStringExtra("description")
-//        val image : String? = intent.getStringExtra("image")
+        val username: String? = intent.getStringExtra("title")
+        val description: String? = intent.getStringExtra("description")
+        val image : String? = intent.getStringExtra("image")
 //
-//        description_TextView.setText(description)
+        description_TextView.setText(description)
         username_TextView.setText(username)
-//        profile_ImageView.setImageURI(image!!.toUri())
-//        Glide.with(this)
-//            .load(image)
-//            .into(profile_ImageView)
+        profile_ImageView.setImageURI(image!!.toUri())
+        Glide.with(this)
+            .load(image)
+            .into(profile_ImageView)
 
     }
 }

@@ -25,9 +25,9 @@ class RecyclerViewAdapter(private  val Constructor_Post: List<User>) : RecyclerV
 
         view.setOnClickListener {
             val intent = Intent(parent.context, User_Details::class.java)
-            //intent.putExtra("description", Constructor_Post[holder.adapterPosition].email)
-            intent.putExtra("username", Constructor_Post[holder.adapterPosition].name)
-           // intent.putExtra("image", Constructor_Post[holder.adapterPosition].image)
+            intent.putExtra("description", Constructor_Post[holder.adapterPosition].description)
+            intent.putExtra("title", Constructor_Post[holder.adapterPosition].title)
+            intent.putExtra("image", Constructor_Post[holder.adapterPosition].image)
             parent.context.startActivity(intent)
 
         }
@@ -37,20 +37,14 @@ class RecyclerViewAdapter(private  val Constructor_Post: List<User>) : RecyclerV
 
     override fun getItemCount(): Int = Constructor_Post.size
 
-//    fun submitList(blogList: List<User>) {
-//        = blogList
-//    }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.username.text = Constructor_Post[position].name
+       holder.username.text = Constructor_Post[position].title
 
-        when(holder) {
-            is ViewHolder -> {
-                holder.bind(Constructor_Post.get(position))
 
-            }
-        }
+       holder.bind(Constructor_Post.get(position))
+
 
 
 
@@ -58,7 +52,6 @@ class RecyclerViewAdapter(private  val Constructor_Post: List<User>) : RecyclerV
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //val description: TextView = itemView.description_TextView
         val image: ImageView = itemView.imageView
         val username: TextView = itemView.username_TextView
 
@@ -68,23 +61,12 @@ class RecyclerViewAdapter(private  val Constructor_Post: List<User>) : RecyclerV
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
 
-//            Glide.with(itemView.context)
-//                .applyDefaultRequestOptions(requestOptions)
-//                .load(constructor_post.image)
-//                .into(image)
-//            Glide.with(itemView.context)
-//                .asBitmap()
-//                .load(constructor_post.image)
-//                .apply(RequestOptions()
-//                    .fitCenter()
-//                    .placeholder(R.drawable.abc_ab_share_pack_mtrl_alpha)
-//                    .error(R.drawable.abc_ab_share_pack_mtrl_alpha))
-//                .into(image)
-//
+            Glide.with(itemView.context)
+                .applyDefaultRequestOptions(requestOptions)
+                .load(constructor_post.image)
+                .into(image)
 
-
-          //  description.setText(constructor_post.description)
-            username.setText(constructor_post.name)
+            username.setText(constructor_post.title)
 
 
         }

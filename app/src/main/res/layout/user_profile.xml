@@ -5,21 +5,24 @@
               android:layout_height="match_parent">
 
     <TextView
-            android:text="TextView"
+            android:id="@+id/username_TextView"
             android:layout_width="match_parent"
             android:layout_height="59dp"
-            android:id="@+id/username_TextView"
-            android:textSize="24sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="Film Name"
+            android:textSize="24sp" />
+
     <ImageView
+            android:id="@+id/profile_ImageView"
             android:layout_width="match_parent"
-            android:layout_height="332dp" app:srcCompat="@drawable/ic_launcher_background"
-            android:id="@+id/profile_ImageView"/>
+            android:layout_height="276dp"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
     <TextView
             android:id="@+id/description_TextView"
-            android:text="text1"
             android:layout_width="match_parent"
-            android:layout_height="74dp"
-            android:textSize="28dp"
-            android:gravity="center_horizontal"/>
+            android:layout_height="337dp"
+            android:gravity="center_horizontal"
+            android:text="Film Description"
+            android:textSize="12sp" />
 </LinearLayout>

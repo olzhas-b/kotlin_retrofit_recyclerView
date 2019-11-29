@@ -21,10 +21,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com")
+            .baseUrl("https://ghibliapi.herokuapp.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -34,42 +33,20 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 showData(response.body()!!)
             }
-
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
-
             }
         })
-
-//        for(i in 0..100){
-//            users.add(User("Daniel","Malone","dan"))
-//        }
-
-        //initRecyclerView()
-//        addDataSet()
-
 
     }
     private fun showData(user: List<User>){
         recycler_view.layoutManager = LinearLayoutManager(this@MainActivity)
         recycler_view.apply {
-
+            for( i in 0..19){
+                user[i].image = "https://picsum.photos/200/300.jpg"
+            }
             adapter = RecyclerViewAdapter(user)
         }
     }
-
-//sdafsavvdsvsdbfdbzsvzdssvs    private fun addDataSet(){
-//        val data = DataSource.createDataSet()
-//        recyclerAdapter.submitList(data)
-//    }
-
-//    private fun initRecyclerView(){
-//        val data = DataSource.createDataSet()
-//        recycler_view.apply {
-//            layoutManager = LinearLayoutManager(this@MainActivity)
-//            //recyclerAdapter = RecyclerViewAdapter(data)
-//            adapter = recyclerAdapter(users)
-//        }
-//    }
 
 }
 
